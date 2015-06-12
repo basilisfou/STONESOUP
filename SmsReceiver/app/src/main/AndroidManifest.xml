@@ -22,6 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ReceiverActivity">
+                <action android:name="android.intent.action.MAIN" />
+        </activity>
         <receiver android:name="com.example.vasilis.smsreceiver.SmsReceiver">
             <intent-filter>
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />

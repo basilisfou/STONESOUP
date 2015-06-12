@@ -54,10 +54,16 @@ public class SmsReceiver extends BroadcastReceiver {
                     }
                 } catch (Exception e){}
 
-                // Display the SMS as Toast.
+                /* Display the SMS as Toast.
                 Toast.makeText(context,"Sender: " +Sender + ", MessageBody: "+ MessageBody
-                        +", Telephone_company: "+ Telephone_Company , Toast.LENGTH_SHORT).show();
+                        +", Telephone_company: "+ Telephone_Company , Toast.LENGTH_SHORT).show();*/
 
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("Sender", Sender);
+                intent.putExtra("Message Body", MessageBody);
+                intent.putExtra("Provider",Telephone_Company);
+                intent.setClass(context,ReceiverActivity.class);
+                context.startActivity(intent);
             }
         }
     }
