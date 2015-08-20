@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="first_level">
+        <item >1</item>
+        <item >2</item>
+        <item >3</item>
+        <item >4</item>
+        <item >5</item>
+    </string-array>
+
+    <string-array name="Second_level_third_item">
+        <item>3.1</item>
+        <item>3.2</item>
+        <item>3.3</item>
+    </string-array>
+
+    <string-array name="Second_level_fifth_item">
+        <item>5.1</item>
+        <item>5.2</item>
+        <item>5.3</item>
+    </string-array>
+
+    <string-array name="third_level_third_item_second_item">
+        <item>3.2.1</item>
+        <item>3.2.2</item>
+        <item>3.3.3</item>
+    </string-array>
+
+</resources>
