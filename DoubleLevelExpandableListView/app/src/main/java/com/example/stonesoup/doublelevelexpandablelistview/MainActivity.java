@@ -78,7 +78,6 @@ public class MainActivity extends AppCompatActivity {
         //setting the adapter
         mExpandableListView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
-
         /**
          * toggling the sliding menu
          */
@@ -90,9 +89,7 @@ public class MainActivity extends AppCompatActivity {
                 // calling onPrepareOptionsMenu() to hide action bar icons
                 getSupportActionBar().setTitle("Closed");
                 invalidateOptionsMenu();
-
             }
-
             @Override
             public void onDrawerOpened(View drawerView) {
                 //when openig the navigation drawer hide the keyboard
@@ -100,20 +97,15 @@ public class MainActivity extends AppCompatActivity {
                 invalidateOptionsMenu();
             }
         };
-
         mActionBarDrawerToggle.setHomeAsUpIndicator(R.drawable.ic_drawer);
         mDrawerLayout.setDrawerListener(mActionBarDrawerToggle);
-
-
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return super.onCreateOptionsMenu(menu);
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 

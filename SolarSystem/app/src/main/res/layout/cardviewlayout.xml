@@ -1,0 +1,166 @@
+<android.support.v7.widget.CardView
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card_view_patiente"
+    android:layout_gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="330dp"
+    card_view:cardCornerRadius="2dp"
+    card_view:cardElevation="2dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="5dp"
+    android:layout_weight="0.03">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#4d5083">
+
+        <ImageView
+            android:id="@+id/planet_pic"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true" />
+        <!--  name -->
+        <TextView
+            android:id="@+id/planet_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#dbdbdc"
+            android:text="Earth"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="2dp"
+            android:textSize="25sp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <!-- Static type-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/static_type"
+            android:text="Type: "
+            android:layout_below="@+id/planet_pic"
+            android:textColor="#dbdbdc"
+            android:textSize="15sp"
+            android:layout_marginLeft="2dp"
+            />
+        <TextView
+            android:id="@+id/type_of_planet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text ="Rocky"
+            android:textColor="#dbdbdc"
+            android:textSize="15sp"
+            android:layout_below="@+id/planet_pic"
+            android:layout_toRightOf="@+id/static_type"
+            android:layout_marginLeft="2dp" />
+
+        <!-- Static Distance from the sun-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/static_distance_sun"
+            android:text="Distance from the sun: "
+            android:layout_below="@+id/static_type"
+            android:textColor="#dbdbdc"
+            android:textSize="15sp"
+            android:layout_marginLeft="2dp"
+            />
+        <TextView
+            android:id="@+id/distance_sun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text ="130000000 "
+            android:textColor="#dbdbdc"
+            android:textSize="15sp"
+            android:layout_toRightOf="@+id/static_distance_sun"
+            android:layout_below="@+id/type_of_planet" />
+        <TextView
+            android:id="@+id/distance_sun_km"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text =" km"
+            android:textColor="#dbdbdc"
+            android:textSize="15sp"
+            android:layout_toRightOf="@+id/distance_sun"
+            android:layout_below="@+id/type_of_planet" />
+        <!--                             Length fo the day                                                          -->
+        <TextView
+            android:id="@+id/static_length_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text ="Length of the Day: "
+            android:textColor="#dbdbdc"
+            android:textSize="15sp"
+            android:layout_marginLeft="2dp"
+            android:layout_below="@+id/static_distance_sun" />
+        <TextView
+            android:id="@+id/length_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text ="2 days"
+            android:textColor="#dbdbdc"
+            android:textSize="15sp"
+            android:layout_toRightOf="@+id/static_length_day"
+            android:layout_below="@+id/distance_sun" />
+        <TextView
+            android:id="@+id/static_radius"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text ="Radius: "
+            android:textColor="#dbdbdc"
+            android:textSize="15sp"
+            android:layout_marginLeft="2dp"
+            android:layout_below="@+id/static_length_day" />
+        <TextView
+            android:id="@+id/radius"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text ="1000"
+            android:textColor="#dbdbdc"
+            android:textSize="15sp"
+            android:layout_toRightOf="@+id/static_radius"
+            android:layout_below="@+id/length_day" />
+        <TextView
+            android:id="@+id/static_gravity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text ="Gravity: "
+            android:layout_marginLeft="2dp"
+            android:textColor="#dbdbdc"
+            android:textSize="15sp"
+            android:layout_below="@+id/static_radius" />
+        <TextView
+            android:id="@+id/gravity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text ="1500"
+            android:textColor="#dbdbdc"
+            android:textSize="15sp"
+            android:layout_toRightOf="@+id/static_radius"
+            android:layout_below="@+id/radius" />
+        <TextView
+            android:id="@+id/a_gravity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#dbdbdc"
+            android:textSize="15sp"
+            android:layout_toRightOf="@+id/gravity"
+            android:layout_below="@+id/radius" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/learnMore"
+            android:layout_margin="5dp"
+            android:layout_below="@+id/gravity"
+            android:elevation="4dp"
+            android:translationZ="4dp"
+            android:gravity="center"
+            android:text="Learn More"
+            android:textColor="#dbdbdc"
+            android:background="#7f000000"/>
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

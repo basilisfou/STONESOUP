@@ -123,7 +123,6 @@ public class SecondLevelAdapter extends BaseExpandableListAdapter {
 
         TextView lTextView = (TextView)convertView.findViewById(R.id.title_SL);
         lTextView.setText(item2.getTitle());
-        //lTextView.setText("GrandSon--------------->");
         return convertView;
     }
 

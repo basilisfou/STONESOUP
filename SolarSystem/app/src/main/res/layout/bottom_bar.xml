@@ -1,0 +1,58 @@
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:id="@+id/bottom_bar"
+    android:layout_height="wrap_content"
+    android:minHeight="50dp"
+    android:background="@color/ColorPrimary"
+    local:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+    local:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+    <ImageButton
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="27dp"
+        android:src="?android:attr/selectableItemBackground"
+        android:id="@+id/planet_cards"
+        android:background="@drawable/planet"
+        />
+
+    <ImageButton
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="27dp"
+        android:layout_marginRight="27dp"
+        android:id="@+id/moon_cards"
+        android:src="?android:attr/selectableItemBackground"
+        android:background="@drawable/moon"
+        />
+
+
+    <ImageButton
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="27dp"
+        android:layout_marginRight="27dp"
+        android:id="@+id/youtube"
+        android:src="?android:attr/selectableItemBackground"
+        android:background="@drawable/ic_live_tv_white_24dp"
+        />
+
+
+    <ImageButton
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="27dp"
+        android:layout_marginRight="30dp"
+        android:id="@+id/sign_out"
+        android:src="?android:attr/selectableItemBackground"
+        android:background="@drawable/ic_person_outline_white_24dp"
+        />
+
+
+</android.support.v7.widget.Toolbar>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- planets -->
+    <string-array name="planets">
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+        <item>Pluto</item>
+    </string-array>
+
+    <!-- Moons of solar system -->
+    <string-array name="moons">
+        <item>Moon</item>
+        <item>Deimos</item>
+        <item>Phobos</item>
+        <item>Callisto</item>
+        <item>Cyllene</item>
+        <item>Europa</item>
+        <item>Ganymede</item>
+        <item>Io</item>
+        <item>Atlas</item>
+        <item>Tethys</item>
+        <item>Titan</item>
+        <item>Titania</item>
+        <item>Triton</item>
+        <item>Charon</item>
+    </string-array>
+</resources>

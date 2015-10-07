@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">SolarSystem</string>
+    <string name="action_settings">Settings</string>
+    <string name="error_player">There was an error initializing the YouTubePlayer (%1$s)</string>
+    <string name="title_activity_log_in">LogIn</string>
+    <string name="st_username">user name</string>
+    <string name="st_password">password</string>
+    <string name="st_bn_log_in">Sign in</string>
+    <string name="tv_or_else">---------------- Or ----------------</string>
+    <string name="st_sing_up">Sign Up</string>
+    <string name="title_activity_sign_up">SignUp</string>
+    <string name="e_mail">e mail</string>
+    <string name="title_activity_splash_screen">SplashScreen</string>
+    <string name="main_activity">MainActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_youtube_activiry">youtube_activiry</string>
+
+
+
+</resources>
