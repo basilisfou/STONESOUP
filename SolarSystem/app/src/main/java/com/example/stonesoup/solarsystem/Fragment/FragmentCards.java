@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.Toast;
 import com.example.stonesoup.solarsystem.Adapter.cardsAdapter;
+import com.example.stonesoup.solarsystem.MainActivity;
+import com.example.stonesoup.solarsystem.Models.Planet;
 import com.example.stonesoup.solarsystem.Models.Planets;
 import com.example.stonesoup.solarsystem.R;
 import com.parse.ParseUser;
@@ -47,7 +49,15 @@ public class FragmentCards extends baseFragment {
         mRecycler = (RecyclerView)v.findViewById(R.id.planet_list);
         mRecycler.setHasFixedSize(true);
         mLayoutManger = new LinearLayoutManager(getActivity());
-        mAdapter = new cardsAdapter(mPlanets);
+        mContext = getActivity();
+        mAdapter = new cardsAdapter(mPlanets,mContext);
+        mAdapter.setOnItemClickListener(new cardsAdapter.OnItemClickListener() {
+
+            @Override
+            public void onItemClick( int position, Planets planet) {
+                onListViewItemClick(position,planet);
+            }
+        });
         mRecycler.setAdapter(mAdapter);
         mRecycler.setLayoutManager(mLayoutManger);
 
@@ -55,58 +65,17 @@ public class FragmentCards extends baseFragment {
         return v;
     }
 
-    @Override
-    public void setImageButtonClicks(){
-        PlanetCards = (ImageButton)v.findViewById(R.id.planet_cards);
-        MoonCareds = (ImageButton)v.findViewById(R.id.moon_cards);
-        youTube = (ImageButton)v.findViewById(R.id.youtube);
-        signOut = (ImageButton)v.findViewById(R.id.sign_out);
-
-        PlanetCards.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                /**
-                 * To planet Cards - learn about planets
-                 */
-                mFragmentManager = getFragmentManager();
-                mFragment = mFragmentManager.findFragmentById(R.id.frame_container);
-                mFragment = new FragmentCards();
-                //To the fragment
-                mFragmentManager.beginTransaction().replace(R.id.frame_container ,mFragment ).commit();
-            }
-        });
-
-        MoonCareds.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                /**
-                 * Card moon - fragmentCard
-                 */
-                mFragmentManager = getFragmentManager();
-                mFragment = mFragmentManager.findFragmentById(R.id.frame_container);
-                mFragment = new FragmentMoons();
-                //To the fragment
-                mFragmentManager.beginTransaction().replace(R.id.frame_container ,mFragment ).commit();
-            }
-        });
-
-        youTube.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        signOut.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                /**
-                 * Sign out from the Current user
-                 */
-                ParseUser.logOut();
-                Toast toast = Toast.makeText(getActivity(),"GoodBuy :( see you next time" , Toast.LENGTH_LONG);
-            }
-        });
+    public void onListViewItemClick(int position, Planets planet){
+        mFragmentManager = getFragmentManager();
+        mFragment = mFragmentManager.findFragmentById(R.id.frame_container);
+        mFragment = new FragmentDescription();
+        MainActivity.setmTitles(planet.getName());
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("item", planet);
+        mFragment.setArguments(bundle);
+        //To the fragment
+        mFragmentManager.beginTransaction().replace(R.id.frame_container ,mFragment ).addToBackStack(null).commit();
     }
+
+
 }

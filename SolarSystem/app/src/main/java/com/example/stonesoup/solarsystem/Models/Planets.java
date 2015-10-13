@@ -16,7 +16,6 @@ public class Planets extends Planet implements Parcelable {
     private long DistanceFromSun;
     private String LengthOfDate;
     private String typeOfPlanet;
-    private String ImageParce;
     private byte[] data;
 
     public Planets(String Name, String Description, String Mass,double Gravity, double radious, long DistanceFromSun

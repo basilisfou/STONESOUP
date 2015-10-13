@@ -54,6 +54,7 @@ public class youtube_activity extends YouTubeBaseActivity implements YouTubePlay
         if(!wasRestored){
             //Load Playlist
             player.loadPlaylist(Config.YOUTUBE_PLAYLIST);
+            //player.cueVideo();
             //Set player Style
             player.setFullscreen(true);
         }

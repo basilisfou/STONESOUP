@@ -2,8 +2,10 @@ package com.example.stonesoup.solarsystem;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -18,6 +20,7 @@ import com.example.stonesoup.solarsystem.Activities.LogIn;
 import com.example.stonesoup.solarsystem.Activities.youtube_activity;
 import com.example.stonesoup.solarsystem.Fragment.FragmentCards;
 import com.example.stonesoup.solarsystem.Fragment.FragmentMoons;
+import com.example.stonesoup.solarsystem.Models.Moons;
 import com.example.stonesoup.solarsystem.Models.Planets;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -48,23 +51,28 @@ public class MainActivity extends AppCompatActivity {
     private static TextView mTitles;
     private ImageButton PlanetCards, MoonCareds , youTube, signOut;
     private ArrayList<Planets> mListPlanets;
+    private ArrayList<Moons> mListMoons;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mListPlanets = new ArrayList<>(); // initialize Planet List
+        mListMoons = new ArrayList<>();
         /**
          * vf : Toolbar customization
          */
         mToolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
+
         //disable toolbar title - override from text box
         mTitles = (TextView) mToolbar.findViewById(R.id.toolbar_title);
         mTitles.setText("Home");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);//disable toolbar title
         //fetching data
         new fetchData().execute();
+        new fetchDataMoons().execute();
         /**
          * vf: Bottom bar customization
          * Toolbar
@@ -82,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         PlanetCards.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                mTitles.setText("Planets");
                 /**
                  * To planet Cards - learn about planets - transfering the List of planets or the List of moons
                  */
@@ -103,9 +111,13 @@ public class MainActivity extends AppCompatActivity {
                 /**
                  * Card moon - fragmentCard
                  */
+                mTitles.setText("Moons");
                 mFragmentManager = getFragmentManager();
                 mFragment = mFragmentManager.findFragmentById(R.id.frame_container);
                 mFragment = new FragmentMoons();
+                Bundle bundle = new Bundle();
+                bundle.putParcelableArrayList("list_moon",mListMoons);
+                mFragment.setArguments(bundle);
                 //To the fragment
                 mFragmentManager.beginTransaction().replace(R.id.frame_container ,mFragment ).commit();
             }
@@ -140,6 +152,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+       //\ menu.findItem(android.R.id.home).setVisible(false);
+
         return true;
     }
 
@@ -148,7 +162,6 @@ public class MainActivity extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
         return super.onOptionsItemSelected(item);
     }
@@ -204,4 +217,49 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+
+    private class fetchDataMoons extends AsyncTask<Void,Void,Void> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            //Taking the object - Table Patients
+            ParseQuery<ParseObject> query = ParseQuery.getQuery("Moons");
+            //fetching the records
+            query.findInBackground(new FindCallback<ParseObject>() {
+
+                @Override
+                public void done(List<ParseObject> moonlist, ParseException e) {
+
+                    //if there are records
+                    if (e == null) {
+                        for (ParseObject moonParse : moonlist) {
+
+                            //a new Patient
+                            Moons moon = new Moons(moonParse.getString("Name"), moonParse.getString("Description"),
+                                    moonParse.getLong("distanceFromParent"), moonParse.getDouble("radius"),
+                                    moonParse.getDouble("Gravity"),moonParse.getDouble("Mass"),moonParse.getString("Planet")
+                            ,moonParse.getParseFile("Image"));
+                            mListMoons.add(moon);
+                        }
+                    } else {
+
+                    }
+                }
+            });
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+
+        }
+    }
+
 }

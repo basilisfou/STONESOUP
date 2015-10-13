@@ -1,7 +1,11 @@
 package com.example.stonesoup.solarsystem.Adapter;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -11,6 +15,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.stonesoup.solarsystem.Fragment.FragmentMoons;
+import com.example.stonesoup.solarsystem.MainActivity;
 import com.example.stonesoup.solarsystem.Models.Planets;
 import com.example.stonesoup.solarsystem.R;
 
@@ -23,11 +29,26 @@ public class cardsAdapter extends RecyclerView.Adapter<cardsAdapter.viewholder> 
     private ArrayList<Planets> mPlanets;
     private byte[] mImagebytes;
     private Bitmap bitmap;
-
-    public cardsAdapter(ArrayList<Planets> pPlanets){
+    private Fragment mFragment;
+    private FragmentManager mFragmentManager;
+    private Context mContext;
+    public static OnItemClickListener listener;// Define listener member variable
+    public cardsAdapter(ArrayList<Planets> pPlanets, Context pContext){
         mPlanets = pPlanets;
+        mContext = pContext;
 
     }
+    // Define the method that allows the parent activity or fragment to define the listener
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
+    /**
+     * Defines the listener interface
+     */
+    public interface OnItemClickListener {
+        void onItemClick( int position, Planets pPlanet);
+    }
+
     class viewholder extends RecyclerView.ViewHolder{
         private ImageView planetImage;
         private TextView planetName, planetType, sunDistance, dayLength, radius, gravity, poinetGravity;
@@ -60,10 +81,9 @@ public class cardsAdapter extends RecyclerView.Adapter<cardsAdapter.viewholder> 
      * where the values of the data base are being connected with the views
      */
     @Override
-    public void onBindViewHolder(cardsAdapter.viewholder holder, int position) {
-        holder.poinetGravity.setText("m/s"+Html.fromHtml("<sup>2</sup>"));
+    public void onBindViewHolder( cardsAdapter.viewholder holder, final int position) {
 
-        Planets planet = mPlanets.get(position);
+        final Planets planet = mPlanets.get(position);
         holder.planetName.setText(planet.getName());
         holder.planetType.setText(planet.getTypeOfPlanet());
         holder.sunDistance.setText(String.valueOf(planet.getDistanceFromSun()));
@@ -74,6 +94,14 @@ public class cardsAdapter extends RecyclerView.Adapter<cardsAdapter.viewholder> 
         //decoding the Image
         bitmap = BitmapFactory.decodeByteArray(mImagebytes, 0, mImagebytes.length);
         holder.planetImage.setImageBitmap(bitmap);
+        holder.learnMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null)
+                    listener.onItemClick(position, planet);
+
+            }
+        });
     }
 
     @Override

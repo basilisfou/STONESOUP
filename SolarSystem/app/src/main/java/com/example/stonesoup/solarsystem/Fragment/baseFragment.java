@@ -20,12 +20,6 @@ public class baseFragment extends Fragment {
     protected ImageButton PlanetCards, MoonCareds , youTube, signOut;
     protected Fragment mFragment;
     protected FragmentManager mFragmentManager;
-    /**
-     * the image buttons
-     */
-    public void setImageButtonClicks(){
-
-    }
 
 
 

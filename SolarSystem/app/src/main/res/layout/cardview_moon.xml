@@ -7,8 +7,8 @@
     android:layout_height="330dp"
     card_view:cardCornerRadius="2dp"
     card_view:cardElevation="2dp"
-    android:layout_marginLeft="3dp"
-    android:layout_marginRight="3dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
     android:layout_marginTop="10dp"
     android:layout_weight="0.03">
 
@@ -18,15 +18,16 @@
         android:background="#4d5083">
 
         <ImageView
-            android:id="@+id/planet_pic"
+            android:id="@+id/moon_pic"
             android:layout_width="match_parent"
             android:layout_height="180dp"
             android:background="#000"
             android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true" />
+
         <!--  name -->
         <TextView
-            android:id="@+id/planet_name"
+            android:id="@+id/moon_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#dbdbdc"
@@ -36,76 +37,37 @@
             android:textSize="25sp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
-        <!-- Static type-->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/static_type"
-            android:text="Type: "
-            android:layout_below="@+id/planet_pic"
-            android:textColor="#dbdbdc"
-            android:textSize="15sp"
-            android:layout_marginLeft="2dp"
-            />
-        <TextView
-            android:id="@+id/type_of_planet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text ="Rocky"
-            android:textColor="#dbdbdc"
-            android:textSize="15sp"
-            android:layout_below="@+id/planet_pic"
-            android:layout_toRightOf="@+id/static_type"
-            android:layout_marginLeft="2dp" />
 
-        <!-- Static Distance from the sun-->
+        <!-- Static Distance from the parent-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/static_distance_sun"
-            android:text="Distance from the sun: "
-            android:layout_below="@+id/static_type"
+            android:id="@+id/static_distance_parent"
+            android:text="Distance from the Planet: "
+            android:layout_below="@+id/moon_pic"
             android:textColor="#dbdbdc"
             android:textSize="15sp"
             android:layout_marginLeft="2dp"
             />
         <TextView
-            android:id="@+id/distance_sun"
+            android:id="@+id/distance_parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text ="130000000 "
             android:textColor="#dbdbdc"
             android:textSize="15sp"
-            android:layout_toRightOf="@+id/static_distance_sun"
-            android:layout_below="@+id/type_of_planet" />
+            android:layout_below="@+id/moon_pic"
+            android:layout_toRightOf="@+id/static_distance_parent" />
         <TextView
             android:id="@+id/distance_sun_km"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text =" km"
             android:textColor="#dbdbdc"
+            android:layout_below="@+id/moon_pic"
             android:textSize="15sp"
-            android:layout_toRightOf="@+id/distance_sun"
-            android:layout_below="@+id/type_of_planet" />
-        <!--                             Length fo the day                                                          -->
-        <TextView
-            android:id="@+id/static_length_day"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text ="Length of the Day: "
-            android:textColor="#dbdbdc"
-            android:textSize="15sp"
-            android:layout_marginLeft="2dp"
-            android:layout_below="@+id/static_distance_sun" />
-        <TextView
-            android:id="@+id/length_day"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text ="2 days"
-            android:textColor="#dbdbdc"
-            android:textSize="15sp"
-            android:layout_toRightOf="@+id/static_length_day"
-            android:layout_below="@+id/distance_sun" />
+            android:layout_toRightOf="@+id/distance_parent" />
+
         <TextView
             android:id="@+id/static_radius"
             android:layout_width="wrap_content"
@@ -114,16 +76,17 @@
             android:textColor="#dbdbdc"
             android:textSize="15sp"
             android:layout_marginLeft="2dp"
-            android:layout_below="@+id/static_length_day" />
+            android:layout_below="@+id/static_distance_parent" />
         <TextView
-            android:id="@+id/radius"
+            android:id="@+id/radius_moon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text ="1000"
             android:textColor="#dbdbdc"
             android:textSize="15sp"
             android:layout_toRightOf="@+id/static_radius"
-            android:layout_below="@+id/length_day" />
+            android:layout_below="@+id/distance_parent" />
+
         <TextView
             android:id="@+id/static_gravity"
             android:layout_width="wrap_content"
@@ -134,29 +97,57 @@
             android:textSize="15sp"
             android:layout_below="@+id/static_radius" />
         <TextView
-            android:id="@+id/gravity"
+            android:id="@+id/gravity_moon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text ="1500"
             android:textColor="#dbdbdc"
             android:textSize="15sp"
             android:layout_toRightOf="@+id/static_radius"
-            android:layout_below="@+id/radius" />
+            android:layout_below="@+id/radius_moon" />
+
         <TextView
-            android:id="@+id/a_gravity"
+            android:id="@+id/static_mass"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text ="Mass: "
+            android:layout_marginLeft="2dp"
             android:textColor="#dbdbdc"
             android:textSize="15sp"
-            android:layout_toRightOf="@+id/gravity"
-            android:layout_below="@+id/radius" />
-
+            android:layout_below="@+id/static_gravity" />
+        <TextView
+            android:id="@+id/mass_moon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text ="1500"
+            android:textColor="#dbdbdc"
+            android:textSize="15sp"
+            android:layout_toRightOf="@+id/static_gravity"
+            android:layout_below="@+id/gravity_moon" />
+        <TextView
+            android:id="@+id/static_planet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text ="Planet of: "
+            android:layout_marginLeft="2dp"
+            android:textColor="#dbdbdc"
+            android:textSize="15sp"
+            android:layout_below="@+id/static_mass" />
+        <TextView
+            android:id="@+id/planet_moon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text ="1500"
+            android:textColor="#dbdbdc"
+            android:textSize="15sp"
+            android:layout_toRightOf="@+id/static_planet"
+            android:layout_below="@+id/mass_moon" />
         <Button
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:id="@+id/learnMore"
+            android:id="@+id/learnMoreMoon"
             android:layout_margin="5dp"
-            android:layout_below="@+id/gravity"
+            android:layout_below="@+id/static_planet"
             android:elevation="4dp"
             android:translationZ="4dp"
             android:gravity="center"
