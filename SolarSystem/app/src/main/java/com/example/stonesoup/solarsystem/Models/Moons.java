@@ -27,7 +27,6 @@ public class Moons extends Planet implements Parcelable {
         this.mass = mass;
         this.motherPlanet = motherPlanet;
         this.imagePic = imagePic;
-
         this.imagePic.getDataInBackground(new GetDataCallback() {
             @Override
             public void done(byte[] bytes, ParseException e) {
